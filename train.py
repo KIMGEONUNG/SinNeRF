@@ -53,7 +53,7 @@ if __name__ == '__main__':
                       #   plugins=DDPPlugin(find_unused_parameters=False),
                       num_sanity_val_steps=1,
                       benchmark=True,
-                      #   precision=16,
+                      precision=16,
                       check_val_every_n_epoch=20,
                       #   prepare_data_per_node=True,
                       profiler=hparams.num_gpus == 1)
