@@ -1,7 +1,7 @@
 #!/bin/bash
 
 source config.sh
-source ~/anaconda3/etc/profile.d/conda.sh
+source $condapath
 conda activate SinNeRF
 
 # STAGE 2
