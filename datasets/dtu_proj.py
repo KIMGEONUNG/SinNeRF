@@ -295,9 +295,9 @@ class MVSDatasetDTU_proj(Dataset):
                 'img_wh must both be multiples of 32!'
         self.scan = scan  # 115
 
-        self.light_idx = 3
+        self.light_idx = 3  # ILLUMINATION
 
-        self.id_list = [2]
+        self.id_list = [2]  # VIEWPORT
         self.build_metas()
         self.n_views = n_views
         self.levels = levels  # FPN levels
@@ -448,7 +448,7 @@ class MVSDatasetDTU_proj(Dataset):
             intrinsics.append(self.intrinsics[index_mat])
             w2cs.append(self.world2cams[index_mat])
             c2ws.append(self.cam2worlds[index_mat])
-            # print(depth_filename)
+            print(depth_filename)
             if os.path.exists(depth_filename):
                 depth, mask, depth_h = self.read_depth(depth_filename)
                 depth_h *= self.scale_factor

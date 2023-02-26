@@ -9,7 +9,7 @@ def get_opts():
                         help='root directory of dataset')
     parser.add_argument('--dataset_name', type=str, default='blender',
                         choices=['llff_ray_patch_1image_proj', 'blender_ray_patch_1image_proj',
-                                 'blender_ray_patch_1image_rot3d', 'dtu_proj'],
+                                 'blender_ray_patch_1image_rot3d', 'dtu_proj', 'co3d_proj', 'co3d_proj2'],
                         help='which dataset to train/val')
     parser.add_argument('--img_wh', nargs="+", type=int, default=[800, 800],
                         help='resolution (img_w, img_h) of the image')

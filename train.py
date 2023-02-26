@@ -45,7 +45,7 @@ if __name__ == '__main__':
                       checkpoint_callback=checkpoint_callback,
                       resume_from_checkpoint=hparams.ckpt_path,
                       logger=logger,
-                      early_stop_callback=None,
+                      # early_stop_callback=None,
                       weights_summary="full",
                       progress_bar_refresh_rate=1,
                       gpus=hparams.num_gpus,
