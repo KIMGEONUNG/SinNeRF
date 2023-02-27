@@ -4,7 +4,7 @@ from scipy.spatial.transform import Rotation as R
 
 path = 'transforms_test.json'
 num = 120
-radius = 6
+radius = 3
 pi = 2 * np.pi / 1
 output = {
     "camera_angle_x": 1.0471975511965976,
@@ -20,7 +20,7 @@ for i in range(num):
 
     tx = radius * np.sin(radian)
     ty = 0
-    tz = -radius + radius * np.cos(radian)
+    tz = radius * np.cos(radian)
 
     # radian = 0
     r = R.from_euler('y', radian, degrees=False).as_matrix()
@@ -40,10 +40,7 @@ for i in range(num):
 
     t = {"transform_matrix": mat}
     frames.append(t)
-    break;
 
 output["frames"] = frames
 with open(path, 'w') as f:
     json.dump(output, f)
-
-# "camera_angle_x": 1.0471975511965976, "frames": [ { "transform_matrix": [ [ 1.0, 0.0, 0.0, 0.0 ], [ 0.0, 1.0, 0.0, 0.0 ], [ 0.0, 0.0, 1.0, 0.0 ], [ 0.0, 0.0, 0.0, 1.0 ] ] },
