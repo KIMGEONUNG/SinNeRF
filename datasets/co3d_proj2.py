@@ -185,7 +185,8 @@ class Co3d_proj2(Dataset):
                 json_name = f"transforms_mytest.json"
             else:
                 json_name = f"transforms_train.json"
-            # json_name = f"transforms_test.json"
+        elif self.split == 'test':
+            json_name = f"transforms_test.json"
         else:
             json_name = f"transforms_{self.split}.json"
         with open(os.path.join(self.root_dir,
@@ -199,17 +200,17 @@ class Co3d_proj2(Dataset):
 
         w, h = self.img_wh
         # original focal length
-        self.focal = 0.5*800 /np.tan(0.5*self.meta['camera_angle_x'])
+        self.focal = 0.5* w /np.tan(0.5*self.meta['camera_angle_x'])
         # when W=800
 
         # modify focal length to match size self.img_wh
-        self.focal *= self.img_wh[0]/800
+        # self.focal *= self.img_wh[0]/
         print(f'focal length: {self.focal}')
         K = np.array([[self.focal, 0, (400 - 1) / 2],
                      [0, self.focal, (400 - 1) / 2], [0, 0, 1]])
         self.K = torch.from_numpy(K).float()
         # bounds, common for all scenes
-        self.near = 2.0
+        self.near = 1.0
         self.far = 6.0
         self.bounds = np.array([self.near, self.far])
 
