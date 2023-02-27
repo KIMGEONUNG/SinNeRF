@@ -505,11 +505,24 @@ class Co3d_proj2(Dataset):
                 else:
                     frame = self.meta['frames'][self.ref_idx]
                     # frame = self.meta['frames'][self.val_idx]
+            if self.split == 'test':
+                frame = self.meta['frames'][idx]
 
             if self.split == 'test_train2':
                 c2w = self.poses_test[idx]
             else:
                 c2w = torch.FloatTensor(frame['transform_matrix'])[:3, :4]
+
+            if self.split == 'test':
+                rays_o, rays_d = get_rays(self.directions, c2w)
+                if self.test_crop:
+                    rays_o, rays_d = get_rays(self.directions_small, c2w)
+                rays = torch.cat([rays_o, rays_d,
+                                  self.near*torch.ones_like(rays_o[:, :1]),
+                                  self.far*torch.ones_like(rays_o[:, :1])],
+                                 1)  # (H*W, 8)
+                sample = {'rays': rays, 'c2w': c2w }
+                return sample
 
             img = Image.open(os.path.join(
                 self.root_dir, f"{frame['file_path']}.png"))
