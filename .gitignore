@@ -1,3 +1,7 @@
+.vimspector.json
+tmp.py
+
+
 .vscode/
 *.ckpt
 *.part

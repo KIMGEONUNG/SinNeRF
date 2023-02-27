@@ -1,5 +1,3 @@
-cat /proc/1/cgroup | grep docker
-
 if [[ $(hostname | grep mark11) ]]; then
     # IN DOCKER CONTAINER MARK11
     export patch_size=48
