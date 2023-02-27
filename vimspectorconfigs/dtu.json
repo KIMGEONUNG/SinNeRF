@@ -1,0 +1,82 @@
+{
+    "configurations": {
+        "run": {
+            "adapter": "debugpy",
+            "configuration": {
+                "request": "launch",
+                "type": "python",
+                "cwd": "${workspaceRoot}",
+                "program": "train.py",
+                "args": [
+                    "--dataset_name",
+                    "dtu_proj",
+                    "--root_dir",
+                    "DATASET/mvs_training/dtu",
+                    "--N_importance",
+                    "64",
+                    "--img_wh",
+                    "640",
+                    "512",
+                    "--num_epochs",
+                    "2000",
+                    "--batch_size",
+                    "1",
+                    "--optimizer",
+                    "adam",
+                    "--lr",
+                    "2e-4",
+                    "--lr_scheduler",
+                    "steplr",
+                    "--decay_step",
+                    "500",
+                    "1000",
+                    "--decay_gamma",
+                    "0.5",
+                    "--exp_name",
+                    "dtu_scan4_s8",
+                    "--with_ref",
+                    "--patch_size_y",
+                    "35",
+                    "--patch_size_x",
+                    "28",
+                    "--sW",
+                    "8",
+                    "--sH",
+                    "8",
+                    "--proj_weight",
+                    "1",
+                    "--depth_smooth_weight",
+                    "0",
+                    "--dis_weight",
+                    "0",
+                    "--num_gpus",
+                    "1",
+                    "--load_depth",
+                    "--depth_type",
+                    "nerf",
+                    "--model",
+                    "sinnerf",
+                    "--depth_weight",
+                    "8",
+                    "--vit_weight",
+                    "10",
+                    "--scan",
+                    "4"
+                ],
+                "stopOnEntry": true,
+                "console": "integratedTerminal",
+                "env": {
+                    "CUDA_VISIBLE_DEVICES": "0"
+                },
+                "justMyCode": true
+            },
+            "breakpoints": {
+                "exception": {
+                    "raised": "N",
+                    "uncaught": "",
+                    "userUnhandled": ""
+                }
+            }
+        }
+    }
+}

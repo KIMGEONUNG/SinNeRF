@@ -199,11 +199,12 @@ class Co3d_proj2(Dataset):
 
         w, h = self.img_wh
         # original focal length
-        self.focal = 0.5*800/np.tan(0.5*self.meta['camera_angle_x'])
+        self.focal = 0.5*800 /np.tan(0.5*self.meta['camera_angle_x'])
         # when W=800
 
         # modify focal length to match size self.img_wh
         self.focal *= self.img_wh[0]/800
+        print(f'focal length: {self.focal}')
         K = np.array([[self.focal, 0, (400 - 1) / 2],
                      [0, self.focal, (400 - 1) / 2], [0, 0, 1]])
         self.K = torch.from_numpy(K).float()
@@ -222,6 +223,8 @@ class Co3d_proj2(Dataset):
                 self.img_wh[1], self.img_wh[0], self.focal)  # (h, w, 3)
 
         if 'lego' in self.root_dir:
+            self.ref_idx = 0
+        elif 'teddybear' in self.root_dir:
             self.ref_idx = 0
         else:
             raise NotImplementedError
