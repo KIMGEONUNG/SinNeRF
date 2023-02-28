@@ -227,6 +227,8 @@ class Co3d_proj2(Dataset):
             self.ref_idx = 0
         elif 'teddybear' in self.root_dir:
             self.ref_idx = 0
+        elif 'ball' in self.root_dir:
+            self.ref_idx = 0
         else:
             raise NotImplementedError
         # self.val_idx = 24 #on val set

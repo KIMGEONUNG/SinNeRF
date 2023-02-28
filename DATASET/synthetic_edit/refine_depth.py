@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from PIL import Image
 from torchvision.transforms import ToTensor
 import numpy as np
@@ -19,5 +21,4 @@ depth -= dm_min
 depth = depth.clip(0, diff) / diff * 255
 
 img = Image.fromarray((depth).astype('uint8'))
-# img.show()
 img.save('reallast.png', quality=100, subsampling=0)
