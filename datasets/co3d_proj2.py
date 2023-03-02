@@ -230,7 +230,7 @@ class Co3d_proj2(Dataset):
         elif 'ball' in self.root_dir:
             self.ref_idx = 0
         else:
-            raise NotImplementedError
+            self.ref_idx = 0
         # self.val_idx = 24 #on val set
         # self.val_idx = 59 # on test set
         if self.depth_type == 'gt':
