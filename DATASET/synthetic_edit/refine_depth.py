@@ -21,4 +21,4 @@ depth -= dm_min
 depth = depth.clip(0, diff) / diff * 255
 
 img = Image.fromarray((depth).astype('uint8'))
-img.save('reallast.png', quality=100, subsampling=0)
+img.save('depth_refined.png', quality=100, subsampling=0)
