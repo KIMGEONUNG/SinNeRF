@@ -19,4 +19,4 @@ fi
 proj=$1
 ckpt=$2
 export CUDA_VISIBLE_DEVICES=0
-python eval.py  --dataset_name co3d_proj2 --root_dir DATASET/synthetic_edit/$proj --N_importance 64 --img_wh 400 400 --model nerf --ckpt_path $ckpt --timestamp test --split test
+python eval.py  --dataset_name co3d_proj2 --root_dir DATASET/synthetic_edit/$proj --N_importance 64 --img_wh 400 400 --model nerf --ckpt_path $ckpt --timestamp $1 --split test
